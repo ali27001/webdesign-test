@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Test</title>
+    <link href="https://fonts.cdnfonts.com/css/itc-avant-garde-gothic-std-book" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/avenir-next-lt-pro" rel="stylesheet">
+
+</head>
+<body>
+<div class="container">
+    <div class="left-side">
+        <img src="img/bg.png" alt="Full-screen image">
+    </div>
+    <div class="right-side">
+        <h4 class="title">Everyday items, we have something to suit every occasion.</h4>
+        <p class="subTitle">At suspendisse augue lectus arcu, accumsan ut sit posuere vitae sit tincidunt semper eu proin leo gravida cursus.</p>
+        <a href="#" class="showAll">Shop all everyday items</a>
+        <div class="product">
+            <button class="nxt-btn"><img src="img/stroke.png" alt=""></button>
+
+            <div class="card-container" id="card-container">
+            <div class="product-card">
+                <img src="img/bg-1.png" alt="Product image">
+                <span class="description">365 Signature Hoodie</span>
+                <div class="price-container">
+                    <span class="price">$50</span>
+                    <div class="item-color-options">
+                        <div class="color color-cyan"></div>
+                        <div class="color color-orange"></div>
+                        <div class="color color-purple"></div>
+                        <div class="color color-green"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="img/bg-2.png" alt="Product image">
+                <span class="description">365 Signature Hoodie</span>
+                <div class="price-container">
+                    <span class="price">$50</span>
+                    <div class="item-color-options">
+                        <div class="color color-cyan"></div>
+                        <div class="color color-orange"></div>
+                        <div class="color color-purple"></div>
+                        <div class="color color-green"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="img/bg-3.png" alt="Product image">
+                <span class="description">365 Signature Hoodie</span>
+                <div class="price-container">
+                    <span class="price">$50</span>
+                        <div class="item-color-options">
+                            <div class="color color-cyan"></div>
+                            <div class="color color-orange"></div>
+                            <div class="color color-purple"></div>
+                            <div class="color color-green"></div>
+                        </div>
+                </div>
+            </div>
+
+        </div>
+        </div>
+    </div>
+</div>
+</body>
+
+<script>
+    const productContainers = [...document.querySelectorAll('.card-container')];
+    const nxtBtn = [...document.querySelectorAll('.nxt-btn')];
+    const preBtn = [...document.querySelectorAll('.pre-btn')];
+
+    productContainers.forEach((item, i) => {
+        let containerDimensions = item.getBoundingClientRect();
+        let containerWidth = containerDimensions.width;
+
+        nxtBtn[i].addEventListener('click', () => {
+            item.scrollLeft += containerWidth;
+        })
+
+        preBtn[i].addEventListener('click', () => {
+            item.scrollLeft -= containerWidth;
+        })
+    })
+</script>
+</html>
+<style>
+    body{
+        padding: 0px;
+        margin: 0px;
+    }
+    .container {
+        display: flex;
+        min-height: 100vh;
+        overflow: hidden;
+    }
+
+    .left-side {
+        width: 50%;
+        height: 100%;
+        min-width: 50%;
+    }
+
+    .left-side img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .right-side {
+        width: 50%;
+        padding-left: 120px;
+        padding-top: 96px;
+        padding-bottom: 96px;
+    }
+
+    #card-container {
+        margin-top: 68px;
+        display: flex;
+        overflow-x: auto;
+        scroll-behavior: smooth;
+    }
+    .card-container::-webkit-scrollbar {
+        display: none;
+    }
+
+
+    .title {
+        font-family: 'ITC Avant Garde Gothic Std Bold', sans-serif;
+        font-weight: 700;
+        font-size: 31.25px;
+        line-height: 130%;
+        width: 494px;
+        margin: 0;
+
+
+    }
+    .subTitle {
+        font-family: 'Avenir';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 160%;
+        color: #666666;
+
+        width: 27rem;
+        height: 3.25rem;
+    }
+    .showAll {
+        font-family: 'Avenir';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 12.8px;
+        line-height: 17px;
+        display: flex;
+        align-items: center;
+        text-transform: capitalize;
+        color: #000000;
+    }
+    .product-card {
+        height: 363px;
+        width: 230px;
+        margin-right: 32px;
+        position: relative;
+    }
+    .product-card img {
+        height: 310px;
+    }
+    .description {
+        font-family: 'Avenir';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 12.8px;
+        line-height: 160%;
+    }
+    .price-container {
+        display: flex;
+        align-items: flex-start;
+        text-align: center;
+        justify-content: space-between;
+    }
+    .price {
+        font-family: 'Avenir';
+        font-weight: 500;
+        font-size: 12.8px;
+        line-height: 160%;
+        display: flex;
+        align-items: center;
+        text-align: center;
+    }
+
+    .product {
+        position: relative;
+        overflow: hidden;
+    }
+    .nxt-btn {
+        z-index: 9;
+        position: absolute;
+        top: 50%;
+        right: 20%;
+    }
+    .item-color-options {
+        justify-content: flex-start;
+        align-items: center;
+        display: flex;
+    }
+    .color {
+        width: 0.75rem;
+        height: 0.75rem;
+        border-radius: 0.75rem;
+        margin-right: 0.375rem;
+    }
+    .color-cyan {
+        background-color: #99c3cc;
+    }
+    .color-orange {
+        background-color: #c99;
+    }
+    .color-purple {
+        background-color: #cb99cc;
+    }
+    .color-green {
+        background-color: #bcd9b2;
+    }
+    .color:first-child {
+        border: 1px solid #000000;
+    }
+    .product-card:last-child {
+        margin-right: 180px
+    }
+
+
+
+    @media  (max-width: 900px) {
+        /* orta boy ekranlar için stiller */
+        .container {
+            display: block;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+        .left-side {
+            width: inherit;
+        }
+        .left-side img {
+            max-height: 500px;
+            object-fit: unset;
+        }
+        .right-side {
+            position: absolute;
+            top: 26%;
+            padding: 5%;
+            width: 90%;
+        }
+
+        .title {
+            width: 19.5rem;
+            font-size: 1.25rem;
+            font-weight: 700;
+            line-height: 2.54rem;
+            color: white;
+        }
+        .subTitle {
+            display: none;
+        }
+        .showAll {
+            font-size: .8rem;
+            font-style: normal;
+            font-weight: 900;
+            color: white;
+        }
+        .nxt-btn {
+            display: none;
+        }
+        .product-card:last-child {
+            margin-right: 32px
+        }
+        .product-card {
+            width: 50%;
+            flex: 0 0 auto;
+            margin-right: 15px;
+        }
+        .product-card img {
+            width: 100%;
+        }
+
+    }
+
+</style>
